@@ -13,9 +13,20 @@
 
 @implementation MasonryVersionAutoLayoutViewController
 
+- (instancetype) init{
+    self = [super init];
+    if(!self){
+        return nil;
+    }
+    [self setTitle:@"Masonry"];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    return self;
+}
+
 - (void) loadView
 {
     [super loadView];
+    
     _yellow = [[UIView alloc] init];
     _green = [[UIView alloc] init];
     _red = [[UIView alloc] init];

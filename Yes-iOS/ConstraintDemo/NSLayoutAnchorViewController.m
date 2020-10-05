@@ -13,8 +13,19 @@
 
 @implementation NSLayoutAnchorViewController
 
+- (instancetype) init{
+    self = [super init];
+    if(!self){
+        return nil;
+    }
+    [self setTitle:@"NSLayoutAnchor"];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    return self;
+}
+
 - (void) loadView {
     [super loadView];
+
     _yellow = [[UIView alloc] init];
     _green = [[UIView alloc] init];
     _red = [[UIView alloc] init];

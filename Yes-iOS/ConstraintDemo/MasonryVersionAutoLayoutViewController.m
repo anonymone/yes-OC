@@ -45,8 +45,8 @@
     }];
     
     [_red mas_makeConstraints:^(MASConstraintMaker *make){
-        make.leading.equalTo(_green);
-        make.trailing.equalTo(_green);
+        make.leading.equalTo(_yellow).offset(margin);
+        make.trailing.equalTo(_yellow).offset(-margin);
         make.height.equalTo(_green).multipliedBy(2.0);
         make.bottom.equalTo(_yellow).offset(-margin);
     }];

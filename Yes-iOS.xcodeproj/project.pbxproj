@@ -18,6 +18,7 @@
 		BC477F992528B4F400EDABA2 /* Yes_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC477F982528B4F400EDABA2 /* Yes_iOSUITests.m */; };
 		BC477FC2252A028400EDABA2 /* MasonryVersionAutoLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC477FC1252A028400EDABA2 /* MasonryVersionAutoLayoutViewController.m */; };
 		BC478024252B0D2200EDABA2 /* NSLayoutAnchorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC478023252B0D2200EDABA2 /* NSLayoutAnchorViewController.m */; };
+		BC478030252B169700EDABA2 /* NSLayoutConstraintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47802F252B169700EDABA2 /* NSLayoutConstraintViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		BC477FC1252A028400EDABA2 /* MasonryVersionAutoLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasonryVersionAutoLayoutViewController.m; sourceTree = "<group>"; };
 		BC478022252B0D2200EDABA2 /* NSLayoutAnchorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSLayoutAnchorViewController.h; sourceTree = "<group>"; };
 		BC478023252B0D2200EDABA2 /* NSLayoutAnchorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSLayoutAnchorViewController.m; sourceTree = "<group>"; };
+		BC47802E252B169700EDABA2 /* NSLayoutConstraintViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSLayoutConstraintViewController.h; sourceTree = "<group>"; };
+		BC47802F252B169700EDABA2 /* NSLayoutConstraintViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSLayoutConstraintViewController.m; sourceTree = "<group>"; };
 		E62BBDAA397572CC569FC04C /* Pods-Yes-iOS-Yes-iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-iOS-Yes-iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-Yes-iOS-Yes-iOSUITests/Pods-Yes-iOS-Yes-iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E8782DBEF900FC5DAC3BF4A7 /* libPods-Yes-iOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yes-iOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBFB4F56B4537B18518CE1DD /* libPods-Yes-iOS-Yes-iOSUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yes-iOS-Yes-iOSUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +171,8 @@
 				BC478023252B0D2200EDABA2 /* NSLayoutAnchorViewController.m */,
 				BC477FC0252A028400EDABA2 /* MasonryVersionAutoLayoutViewController.h */,
 				BC477FC1252A028400EDABA2 /* MasonryVersionAutoLayoutViewController.m */,
+				BC47802E252B169700EDABA2 /* NSLayoutConstraintViewController.h */,
+				BC47802F252B169700EDABA2 /* NSLayoutConstraintViewController.m */,
 			);
 			path = ConstraintDemo;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC478030252B169700EDABA2 /* NSLayoutConstraintViewController.m in Sources */,
 				BC477FC2252A028400EDABA2 /* MasonryVersionAutoLayoutViewController.m in Sources */,
 				BC478024252B0D2200EDABA2 /* NSLayoutAnchorViewController.m in Sources */,
 				BC477F732528B4F200EDABA2 /* AppDelegate.m in Sources */,

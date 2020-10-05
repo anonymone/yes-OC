@@ -22,6 +22,7 @@
     [_yellow setBackgroundColor:[UIColor yellowColor]];
     [_green setBackgroundColor:[UIColor greenColor]];
     [_red setBackgroundColor:[UIColor redColor]];
+    
     _yellow.translatesAutoresizingMaskIntoConstraints = NO;
     _green.translatesAutoresizingMaskIntoConstraints = NO;
     _red.translatesAutoresizingMaskIntoConstraints = NO;

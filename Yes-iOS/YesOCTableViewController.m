@@ -12,6 +12,7 @@
 #import "CollectionViewDemoController.h"
 #import "ScrollViewDemoController.h"
 #import "TimeSelectViewDemoController.h"
+#import "TabBarViewDemoController.h"
 
 @interface YesOCTableViewController ()
 @property (nonatomic, strong) NSArray *DemoList;
@@ -31,7 +32,8 @@
         [[MasonryVersionAutoLayoutViewController alloc] init],
         [[CollectionViewDemoController alloc] init],
         [[ScrollViewDemoController alloc] init],
-        [[TimeSelectViewDemoController alloc] init]
+        [[TimeSelectViewDemoController alloc] init],
+        [[TabBarViewDemoController alloc] init]
     ];
     return self;
 }

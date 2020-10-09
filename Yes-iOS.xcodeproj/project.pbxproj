@@ -121,11 +121,11 @@
 			isa = PBXGroup;
 			children = (
 				2DF5CC9B253072140082CD89 /* ScrollViewDemoController.h */,
+				2DF5CC9C253072140082CD89 /* ScrollViewDemoController.m */,
 				2DF5CCA4253073760082CD89 /* TabBarViewDemoController.h */,
 				2DF5CCA5253073760082CD89 /* TabBarViewDemoController.m */,
 				2DF5CCAA253073E70082CD89 /* TimeSelectViewDemoController.h */,
 				2DF5CCAB253073E70082CD89 /* TimeSelectViewDemoController.m */,
-				2DF5CC9C253072140082CD89 /* ScrollViewDemoController.m */,
 				2DF5CC45253013390082CD89 /* CollectionViewDemoController.h */,
 				2DF5CC46253013390082CD89 /* CollectionViewDemoController.m */,
 			);
@@ -623,7 +623,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W3ZVQW8Q2V;
+				DEVELOPMENT_TEAM = QY95NGHGP4;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -638,7 +638,7 @@
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "bytedance.Yes-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "severuspeng.Yes-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -651,7 +651,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W3ZVQW8Q2V;
+				DEVELOPMENT_TEAM = QY95NGHGP4;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -666,7 +666,7 @@
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "bytedance.Yes-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "severuspeng.Yes-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -678,6 +678,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QY95NGHGP4;
 				INFOPLIST_FILE = "Yes-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -698,6 +699,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QY95NGHGP4;
 				INFOPLIST_FILE = "Yes-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -717,6 +719,7 @@
 			baseConfigurationReference = BB230F81CBABA17E0B00B676 /* Pods-Yes-iOS-Yes-iOSUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QY95NGHGP4;
 				INFOPLIST_FILE = "Yes-iOSUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -735,6 +738,7 @@
 			baseConfigurationReference = E62BBDAA397572CC569FC04C /* Pods-Yes-iOS-Yes-iOSUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QY95NGHGP4;
 				INFOPLIST_FILE = "Yes-iOSUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

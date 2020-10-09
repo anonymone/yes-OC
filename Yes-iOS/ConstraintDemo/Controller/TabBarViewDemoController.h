@@ -1,5 +1,5 @@
 //
-//  BNRHypnosisView.h
+//  TabBarViewDemoController.h
 //  Yes-iOS
 //
 //  Created by ShichenPeng on 2020/10/9.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BNRHypnosisView : UIView
+@interface TabBarViewDemoController : UIViewController
 
 @end
 

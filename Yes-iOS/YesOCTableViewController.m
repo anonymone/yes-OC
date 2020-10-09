@@ -10,7 +10,8 @@
 #import "NSLayoutAnchorViewController.h"
 #import "MasonryVersionAutoLayoutViewController.h"
 #import "CollectionViewDemoController.h"
-#import "BNRHypnosisViewController.h"
+#import "ScrollViewDemoController.h"
+#import "TimeSelectViewDemoController.h"
 
 @interface YesOCTableViewController ()
 @property (nonatomic, strong) NSArray *DemoList;
@@ -29,7 +30,8 @@
         [[NSLayoutAnchorViewController alloc] init],
         [[MasonryVersionAutoLayoutViewController alloc] init],
         [[CollectionViewDemoController alloc] init],
-        [[BNRHypnosisViewController alloc] init]
+        [[ScrollViewDemoController alloc] init],
+        [[TimeSelectViewDemoController alloc] init]
     ];
     return self;
 }

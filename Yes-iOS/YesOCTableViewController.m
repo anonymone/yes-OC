@@ -9,6 +9,8 @@
 #import "NSLayoutConstraintViewController.h"
 #import "NSLayoutAnchorViewController.h"
 #import "MasonryVersionAutoLayoutViewController.h"
+#import "CollectionViewDemoController.h"
+#import "BNRHypnosisViewController.h"
 
 @interface YesOCTableViewController ()
 @property (nonatomic, strong) NSArray *DemoList;
@@ -25,7 +27,9 @@
     _DemoList = @[
         [[NSLayoutConstraintViewController alloc] init],
         [[NSLayoutAnchorViewController alloc] init],
-        [[MasonryVersionAutoLayoutViewController alloc] init]
+        [[MasonryVersionAutoLayoutViewController alloc] init],
+        [[CollectionViewDemoController alloc] init],
+        [[BNRHypnosisViewController alloc] init]
     ];
     return self;
 }

@@ -87,10 +87,10 @@
     [_console setText:[NSString stringWithFormat:@"%@", data]];
     
     // Local Notification
-    UILocalNotification *note = [[UILocalNotification alloc] init];
-    [note setAlertBody:@"Hypnotize Me!"];
-    [note setFireDate:data];
-    [[UIApplication sharedApplication] scheduleLocalNotification:note];
+//    UILocalNotification *note = [[UILocalNotification alloc] init];
+//    [note setAlertBody:@"Hypnotize Me!"];
+//    [note setFireDate:data];
+//    [[UIApplication sharedApplication] scheduleLocalNotification:note];
 }
 
 @end

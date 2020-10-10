@@ -18,19 +18,23 @@
 
 @implementation TabBarViewDemoController
 
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        [self.tabBarItem setTitle:@"Time Select"];
+    }
+    return self;
+}
+
 - (instancetype)  init{
     self = [super init];
     if(!self){
         return nil;
     }
     [self setTitle:@"TabBar Demo"];
-    _scroll = [[ScrollViewDemoController alloc] init];
-    [_scroll.tabBarItem setTitle:@"Scroll"];
-    [_scroll.tabBarItem setImage:[UIImage imageNamed:@"tabBar_essence_icon"]];
     
+    _scroll = [[ScrollViewDemoController alloc] init];
     _timeSelect = [[TimeSelectViewDemoController alloc] init];
-    [_timeSelect.tabBarItem setTitle:@"Time Select"];
-    [_timeSelect.tabBarItem setImage:[UIImage imageNamed:@"tabBar_new_click_icon"]];
     
     [self addChildViewController:_scroll];
     [self addChildViewController:_timeSelect];

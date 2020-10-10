@@ -33,6 +33,8 @@
 
 - (void) loadView{
     [super loadView];
+    NSLog(@"%@ loadView.", self.title);
+    
     _timeView = [[UIView alloc] initWithFrame:self.view.frame];
     _clock = [[UIDatePicker alloc] initWithFrame:CGRectMake(30, 100, 250, 150)];
     _reminderButton = [[UIButton alloc] initWithFrame:CGRectMake(80, 300, 150, 50)];
@@ -54,12 +56,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"%@ viewDidLoad.", self.title);
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSLog(@"%@ viewWillAppear.", self.title);
+    
+    self.clock.minimumDate = [NSDate dateWithTimeIntervalSinceNow:60];
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    NSLog(@"%@ viewDidAppear.", self.title);
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    NSLog(@"%@ viewWillDisappear", self.title);
+}
+
+- (void) viewDidDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    NSLog(@"%@ viewDidDisappear", self.title);
 }
 
 - (void) addReminder:(id)sender{
     NSDate *data = _clock.date;
     NSLog(@"Setting a reminder for %@", data);
     [_console setText:[NSString stringWithFormat:@"%@", data]];
+    
+    // Local Notification
+    UILocalNotification *note = [[UILocalNotification alloc] init];
+    [note setAlertBody:@"Hypnotize Me!"];
+    [note setFireDate:data];
+    [[UIApplication sharedApplication] scheduleLocalNotification:note];
 }
 
 @end

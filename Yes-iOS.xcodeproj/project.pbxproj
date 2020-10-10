@@ -13,6 +13,7 @@
 		2DF5CC9D253072140082CD89 /* ScrollViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CC9C253072140082CD89 /* ScrollViewDemoController.m */; };
 		2DF5CCA6253073760082CD89 /* TabBarViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CCA5253073760082CD89 /* TabBarViewDemoController.m */; };
 		2DF5CCAC253073E70082CD89 /* TimeSelectViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CCAB253073E70082CD89 /* TimeSelectViewDemoController.m */; };
+		2DF5CCC12531A5E20082CD89 /* ZoomViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CCC02531A5E20082CD89 /* ZoomViewDemoController.m */; };
 		53461784E15E37E3464C384C /* libPods-Yes-iOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8782DBEF900FC5DAC3BF4A7 /* libPods-Yes-iOSTests.a */; };
 		596331C62B0E1862C8CCE455 /* libPods-Yes-iOS-Yes-iOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFB4F56B4537B18518CE1DD /* libPods-Yes-iOS-Yes-iOSUITests.a */; };
 		73DFCFAEEF096AE01A6FCC54 /* libPods-Yes-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A387D98200DCF3EF0680A9 /* libPods-Yes-iOS.a */; };
@@ -59,6 +60,8 @@
 		2DF5CCA5253073760082CD89 /* TabBarViewDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewDemoController.m; sourceTree = "<group>"; };
 		2DF5CCAA253073E70082CD89 /* TimeSelectViewDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeSelectViewDemoController.h; sourceTree = "<group>"; };
 		2DF5CCAB253073E70082CD89 /* TimeSelectViewDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeSelectViewDemoController.m; sourceTree = "<group>"; };
+		2DF5CCBF2531A5E20082CD89 /* ZoomViewDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomViewDemoController.h; sourceTree = "<group>"; };
+		2DF5CCC02531A5E20082CD89 /* ZoomViewDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomViewDemoController.m; sourceTree = "<group>"; };
 		3BDCD281DE4718F95AE996A4 /* Pods-Yes-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Yes-iOS/Pods-Yes-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		72A387D98200DCF3EF0680A9 /* libPods-Yes-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yes-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4273E1D526E772E643DF144 /* Pods-Yes-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Yes-iOSTests/Pods-Yes-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				2DF5CCAB253073E70082CD89 /* TimeSelectViewDemoController.m */,
 				2DF5CC45253013390082CD89 /* CollectionViewDemoController.h */,
 				2DF5CC46253013390082CD89 /* CollectionViewDemoController.m */,
+				2DF5CCBF2531A5E20082CD89 /* ZoomViewDemoController.h */,
+				2DF5CCC02531A5E20082CD89 /* ZoomViewDemoController.m */,
 			);
 			name = Controller;
 			path = ConstraintDemo/Controller;
@@ -455,6 +460,7 @@
 				2DF5CC47253013390082CD89 /* CollectionViewDemoController.m in Sources */,
 				2DF5CC6025303F4A0082CD89 /* BNRHypnosisView.m in Sources */,
 				2DF5CC9D253072140082CD89 /* ScrollViewDemoController.m in Sources */,
+				2DF5CCC12531A5E20082CD89 /* ZoomViewDemoController.m in Sources */,
 				BC478036252B52E600EDABA2 /* YesOCTableViewController.m in Sources */,
 				2DF5CCA6253073760082CD89 /* TabBarViewDemoController.m in Sources */,
 				2DF5CCAC253073E70082CD89 /* TimeSelectViewDemoController.m in Sources */,
@@ -623,7 +629,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QY95NGHGP4;
+				DEVELOPMENT_TEAM = W3ZVQW8Q2V;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -638,7 +644,7 @@
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "severuspeng.Yes-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "bytedance.Yes-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -651,7 +657,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QY95NGHGP4;
+				DEVELOPMENT_TEAM = W3ZVQW8Q2V;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -666,7 +672,7 @@
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "severuspeng.Yes-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "bytedance.Yes-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -678,7 +684,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QY95NGHGP4;
+				DEVELOPMENT_TEAM = W3ZVQW8Q2V;
 				INFOPLIST_FILE = "Yes-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -699,7 +705,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QY95NGHGP4;
+				DEVELOPMENT_TEAM = W3ZVQW8Q2V;
 				INFOPLIST_FILE = "Yes-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -719,7 +725,7 @@
 			baseConfigurationReference = BB230F81CBABA17E0B00B676 /* Pods-Yes-iOS-Yes-iOSUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QY95NGHGP4;
+				DEVELOPMENT_TEAM = W3ZVQW8Q2V;
 				INFOPLIST_FILE = "Yes-iOSUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -738,7 +744,7 @@
 			baseConfigurationReference = E62BBDAA397572CC569FC04C /* Pods-Yes-iOS-Yes-iOSUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QY95NGHGP4;
+				DEVELOPMENT_TEAM = W3ZVQW8Q2V;
 				INFOPLIST_FILE = "Yes-iOSUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

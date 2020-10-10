@@ -1,62 +1,42 @@
 //
-//  ScrollViewDemoController.m
+//  ZoomViewDemoController.m
 //  Yes-iOS
 //
-//  Created by ShichenPeng on 2020/10/9.
+//  Created by ShichenPeng on 2020/10/10.
 //
 
-#import "ScrollViewDemoController.h"
+#import "ZoomViewDemoController.h"
 #import "BNRHypnosisView.h"
 #import <Masonry/Masonry.h>
 
-@interface ScrollViewDemoController () <UITextFieldDelegate>
-@property (nonatomic, strong) BNRHypnosisView *BNRviewPre;
-@property (nonatomic, strong) BNRHypnosisView *BNRView;
-@property (nonatomic, strong) BNRHypnosisView *BNRViewNext;
+@interface ZoomViewDemoController () <UIScrollViewDelegate, UITextFieldDelegate>
+@property (nonatomic,strong) BNRHypnosisView *BNRview;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UITextField *slogen;
 
 @end
 
-@implementation ScrollViewDemoController
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if(self){
-        [self.tabBarItem setTitle:@"Scroll"];
-    }
-    return self;
-}
+@implementation ZoomViewDemoController
 
 - (instancetype) init{
-    self  = [super init];
-    if(!self){
-        return nil;
+    self = [super init];
+    if(self){
+        [self setTitle:@"Zoom Demo"];
     }
-    // setTitle also change the value in self.tabBarItem.title
-    [self setTitle:@"ScrollView Demo"];
     return self;
 }
 
-- (void) loadView{
+- (void) loadView {
     [super loadView];
     NSLog(@"%@ loadView.", self.title);
+    CGRect screenRect = self.view.frame;
     
-    // Do any additional setup after loading the view.
-    CGRect screenRect = self.view.bounds;
-    CGRect bigRect = screenRect;
-    
-    bigRect.size.width *= 3.0;
-    //bigRect.size.height *= 2.0;
-
-    
-    _scrollView = [[UIScrollView alloc] initWithFrame:screenRect];
-    [_scrollView setPagingEnabled:YES];
-
-    _BNRviewPre = [[BNRHypnosisView alloc] initWithFrame:screenRect];
-    screenRect.origin.x += screenRect.size.width;
-    _BNRView = [[BNRHypnosisView alloc] initWithFrame:screenRect];
-    screenRect.origin.x += screenRect.size.width;
-    _BNRViewNext = [[BNRHypnosisView alloc] initWithFrame:screenRect];
+    _scrollView = [[UIScrollView alloc] init];
+    [_scrollView setPagingEnabled:NO];
+    [_scrollView setDelegate:self];
+    [_scrollView setContentSize:screenRect.size];
+    [_scrollView setMinimumZoomScale:1.0];
+    [_scrollView setMaximumZoomScale:2.0];
     
     _slogen = [[UITextField alloc] init];
     [_slogen setBorderStyle:UITextBorderStyleRoundedRect];
@@ -64,25 +44,32 @@
     [_slogen setReturnKeyType:UIReturnKeyDone];
     _slogen.delegate = self;
     
-    [_BNRviewPre setBackgroundColor:[UIColor whiteColor]];
-    [_BNRView setBackgroundColor:[UIColor whiteColor]];
-    [_BNRViewNext setBackgroundColor:[UIColor whiteColor]];
+    //add Parallax Effect
+    UIInterpolatingMotionEffect *motionEffect;
+    motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    motionEffect.minimumRelativeValue = @(-25);
+    motionEffect.maximumRelativeValue = @(25);
+    [_slogen addMotionEffect:motionEffect];
     
-    [_scrollView addSubview:_BNRviewPre];
-    [_scrollView addSubview:_BNRView];
-    [_scrollView addSubview:_BNRViewNext];
+    motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    motionEffect.minimumRelativeValue = @(-25);
+    motionEffect.maximumRelativeValue = @(25);
+    [_slogen addMotionEffect:motionEffect];
+    
+    
+    _BNRview = [[BNRHypnosisView alloc] initWithFrame:screenRect];
+    [_BNRview setBackgroundColor:[UIColor whiteColor]];
+    
+    [_scrollView addSubview:_BNRview];
     
     [self.view addSubview:_scrollView];
     [self.view addSubview:_slogen];
     
-    //tell the UIScrollView how large the window is.
-    [_scrollView setContentSize:bigRect.size];
-    
     [_scrollView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
-        make.bottom.equalTo(self.view);
-        make.leading.equalTo(self.view);
-        make.trailing.equalTo(self.view);
+        make.bottom.equalTo(self.view.mas_bottom);
+        make.leading.equalTo(self.view.mas_leading);
+        make.trailing.equalTo(self.view.mas_trailing);
     }];
     
     [_slogen mas_makeConstraints:^(MASConstraintMaker *make){
@@ -119,24 +106,29 @@
     NSLog(@"%@ viewDidDisappear", self.title);
 }
 
-#pragma mark Delegate textField
 
-- (BOOL) textFieldShouldReturn:(UITextField *) textField
+#pragma mark Delegate ScrollView
+
+- (UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    NSLog(@"%@", textField.text);
-    
+    NSLog(@"%@ viewForZoomingInScrollView", self.title);
+    return _BNRview;
+}
+
+#pragma mark Delegate tectFieldView
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    NSLog(@"%@ textFieldShouldReturn receive message %@", self.title, textField.text);
     [self drawHypnoticMessage:textField.text];
-    
     [textField setText:@""];
-    
-    //hide the keyboard.
     [textField resignFirstResponder];
     return YES;
 }
 
 - (void) drawHypnoticMessage:(NSString *) message
 {
-    for(int i =0; i<10; i++){
+    for(int i =0; i<20; i++){
         UILabel *messageLabel = [[UILabel alloc] init];
         
         [messageLabel setBackgroundColor:[UIColor clearColor]];
@@ -158,14 +150,24 @@
         // add Parallax Effect
         UIInterpolatingMotionEffect *motionEffect;
         motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-        motionEffect.minimumRelativeValue = @(-25);
-        motionEffect.maximumRelativeValue = @(25);
+        motionEffect.minimumRelativeValue = @(-50);
+        motionEffect.maximumRelativeValue = @(50);
         [messageLabel addMotionEffect:motionEffect];
         
         motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-        motionEffect.minimumRelativeValue = @(-25);
-        motionEffect.maximumRelativeValue = @(25);
+        motionEffect.minimumRelativeValue = @(-50);
+        motionEffect.maximumRelativeValue = @(50);
         [messageLabel addMotionEffect:motionEffect];
     }
 }
+
+#pragma mark TouchEvent
+
+//- (void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+//{
+//    NSLog(@"%@ was touched", self);
+//    [_slogen resignFirstResponder];
+//    [super touchesBegan:touches withEvent:event];
+//}
+
 @end

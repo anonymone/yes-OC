@@ -13,6 +13,7 @@
 #import "ScrollViewDemoController.h"
 #import "TimeSelectViewDemoController.h"
 #import "TabBarViewDemoController.h"
+#import "ZoomViewDemoController.h"
 
 @interface YesOCTableViewController ()
 @property (nonatomic, strong) NSArray *DemoList;
@@ -33,7 +34,8 @@
         [[CollectionViewDemoController alloc] init],
         [[ScrollViewDemoController alloc] init],
         [[TimeSelectViewDemoController alloc] init],
-        [[TabBarViewDemoController alloc] init]
+        [[TabBarViewDemoController alloc] init],
+        [[ZoomViewDemoController alloc] init]
     ];
     return self;
 }

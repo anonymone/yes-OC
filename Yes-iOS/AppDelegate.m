@@ -9,7 +9,6 @@
 #import "YesOCTableViewController.h"
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate

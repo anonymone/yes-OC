@@ -15,6 +15,7 @@
 		2DF5CCAC253073E70082CD89 /* TimeSelectViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CCAB253073E70082CD89 /* TimeSelectViewDemoController.m */; };
 		2DF5CCC12531A5E20082CD89 /* ZoomViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CCC02531A5E20082CD89 /* ZoomViewDemoController.m */; };
 		2DF5CFDA253434FF0082CD89 /* NavigationViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CFD9253434FF0082CD89 /* NavigationViewDemoController.m */; };
+		2DF5CFDF253481020082CD89 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5CFDE253481020082CD89 /* camera.png */; };
 		53461784E15E37E3464C384C /* libPods-Yes-iOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8782DBEF900FC5DAC3BF4A7 /* libPods-Yes-iOSTests.a */; };
 		596331C62B0E1862C8CCE455 /* libPods-Yes-iOS-Yes-iOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFB4F56B4537B18518CE1DD /* libPods-Yes-iOS-Yes-iOSUITests.a */; };
 		73DFCFAEEF096AE01A6FCC54 /* libPods-Yes-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A387D98200DCF3EF0680A9 /* libPods-Yes-iOS.a */; };
@@ -67,6 +68,7 @@
 		2DF5CCC02531A5E20082CD89 /* ZoomViewDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomViewDemoController.m; sourceTree = "<group>"; };
 		2DF5CFD8253434FF0082CD89 /* NavigationViewDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationViewDemoController.h; sourceTree = "<group>"; };
 		2DF5CFD9253434FF0082CD89 /* NavigationViewDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationViewDemoController.m; sourceTree = "<group>"; };
+		2DF5CFDE253481020082CD89 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		3BDCD281DE4718F95AE996A4 /* Pods-Yes-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Yes-iOS/Pods-Yes-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		72A387D98200DCF3EF0680A9 /* libPods-Yes-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yes-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4273E1D526E772E643DF144 /* Pods-Yes-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Yes-iOSTests/Pods-Yes-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		2DF5CC8525304D080082CD89 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2DF5CFDE253481020082CD89 /* camera.png */,
 				2DF5CC8025304D030082CD89 /* star.png */,
 			);
 			path = Images;
@@ -381,6 +384,7 @@
 			files = (
 				BC477F812528B4F400EDABA2 /* LaunchScreen.storyboard in Resources */,
 				2DF5CC8125304D030082CD89 /* star.png in Resources */,
+				2DF5CFDF253481020082CD89 /* camera.png in Resources */,
 				BC477F7E2528B4F400EDABA2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

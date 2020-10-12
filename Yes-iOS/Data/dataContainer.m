@@ -15,19 +15,24 @@
 
 @implementation dataContainer
 
-+ (instancetype) sharedContainer
-{
-    static dataContainer *sharedContainer = nil;
-    if (!sharedContainer){
-        sharedContainer = [[self alloc] initPrivate];
-    }
-    return sharedContainer;
-}
+//+ (instancetype) sharedContainer
+//{
+//    dataContainer *sharedContainer = nil;
+////    if (!sharedContainer){
+////        sharedContainer = [[self alloc] initPrivate];
+////    }
+//    return sharedContainer;
+//}
 
 - (instancetype) init
 {
-    @throw [NSException exceptionWithName:@"Singleton" reason:@"Use + [dataContainer sharedContainer]" userInfo:nil];
-    return nil;
+//    @throw [NSException exceptionWithName:@"Singleton" reason:@"Use + [dataContainer sharedContainer]" userInfo:nil];
+//    return nil;
+    self = [super init];
+    if(self){
+        _privateItems = [[NSMutableArray alloc] init];
+    }
+    return self;
 }
 
 - (instancetype) initPrivate
@@ -49,6 +54,21 @@
     dataItem *item = [[dataItem alloc] initWithClass:withClass];
     [_privateItems addObject:item];
     return item;
+}
+
+- (void) removeItem:(dataItem *) item
+{
+    [_privateItems removeObjectIdenticalTo:item];
+}
+
+- (void) moveItemAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex
+{
+    if(fromIndex == toIndex){
+        return;
+    }
+    dataItem *item = _privateItems[fromIndex];
+    [_privateItems removeObjectAtIndex:fromIndex];
+    [_privateItems insertObject:item atIndex:toIndex];
 }
 
 - (NSInteger) countOfAllItems{

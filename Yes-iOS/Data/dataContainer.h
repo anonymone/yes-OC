@@ -15,9 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSArray *allItems;
 
-+ (instancetype) sharedContainer;
+//+ (instancetype) sharedContainer;
 
 - (dataItem *)creatItem:(Class) withClass;
+
+- (void) removeItem:(dataItem *) item;
+
+- (void) moveItemAtIndex:(NSUInteger) fromIndex toIndex:(NSUInteger) toIndex;
 
 - (NSInteger) countOfAllItems;
 

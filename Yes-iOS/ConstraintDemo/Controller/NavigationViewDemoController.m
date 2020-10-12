@@ -54,11 +54,9 @@
     [_titleName setDelegate:self];
     
     _imageDisplay = [[UIImageView alloc] init];
-    [_imageDisplay setBackgroundColor:[UIColor grayColor]];
     [_imageDisplay setContentMode:UIViewContentModeScaleAspectFit];
     
     _tools = [[UIToolbar alloc] init];
-    [_tools setBackgroundColor:[UIColor grayColor]];
     
     UIImage *camera = [UIImage imageNamed:@"camera.png"];
     _cameraShot = [[UIBarButtonItem alloc] initWithImage:camera style:UIBarButtonItemStylePlain target:self action:@selector(takePicture:)];
@@ -139,12 +137,6 @@
         make.height.equalTo(_naviView.mas_width).multipliedBy(0.1);
     }];
     
-//    [_cameraShot mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.leading.equalTo(_tools.mas_leading).offset(2);
-//        make.top.equalTo(_tools.mas_top).offset(2);
-//        make.bottom.equalTo(_tools.mas_bottom).offset(-2);
-//        make.width.equalTo(_cameraShot.mas_height);
-//    }];
 }
 
 #pragma mark Delegate

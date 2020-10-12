@@ -13,8 +13,8 @@
 @property (nonatomic, strong) UIView *naviView;
 @property (nonatomic, strong) UITextField *titleName;
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UITextField *className;
-@property (nonatomic, strong) UILabel *classLabel;
+
+@property (nonatomic, strong) UIColor *lastviewColer;
 
 @end
 
@@ -34,7 +34,6 @@
 - (void) loadView{
     [super loadView];
     NSLog(@"%@ loadView.", self.title);
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.527 green:0.804 blue:0.976 alpha:0.9]];
     
     _naviView = [[UIView alloc] init];
     [_naviView setBackgroundColor:[UIColor whiteColor]];
@@ -83,6 +82,10 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    _lastviewColer = self.navigationController.navigationBar.barTintColor;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.527 green:0.804 blue:0.976 alpha:0.9];
+    NSLog(@"Source %@ ---> Destination %@", _data.title, _titleName.text);
+    
     if(_data){
         [self setTitle:_data.title];
     }
@@ -92,8 +95,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.barTintColor = _lastviewColer;
     [self.view endEditing:YES];
-    
+    NSLog(@"Source %@ <--- Destination %@", _data.title, _titleName.text);
     dataItem *item = _data;
     item.title = _titleName.text;
 }

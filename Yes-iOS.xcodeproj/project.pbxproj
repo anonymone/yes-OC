@@ -16,6 +16,10 @@
 		2DF5CCC12531A5E20082CD89 /* ZoomViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CCC02531A5E20082CD89 /* ZoomViewDemoController.m */; };
 		2DF5CFDA253434FF0082CD89 /* NavigationViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CFD9253434FF0082CD89 /* NavigationViewDemoController.m */; };
 		2DF5CFDF253481020082CD89 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5CFDE253481020082CD89 /* camera.png */; };
+		2DF5CFE425354BE30082CD89 /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5CFE325354BE30082CD89 /* gallery.png */; };
+		2DF5CFEA253555C80082CD89 /* dataImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CFE8253555C80082CD89 /* dataImageStore.m */; };
+		2DF5CFF025357A8C0082CD89 /* dataImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CFEF25357A8C0082CD89 /* dataImageItem.m */; };
+		2DF5CFF825359CBB0082CD89 /* focus.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5CFF725359CBB0082CD89 /* focus.png */; };
 		53461784E15E37E3464C384C /* libPods-Yes-iOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8782DBEF900FC5DAC3BF4A7 /* libPods-Yes-iOSTests.a */; };
 		596331C62B0E1862C8CCE455 /* libPods-Yes-iOS-Yes-iOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFB4F56B4537B18518CE1DD /* libPods-Yes-iOS-Yes-iOSUITests.a */; };
 		73DFCFAEEF096AE01A6FCC54 /* libPods-Yes-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A387D98200DCF3EF0680A9 /* libPods-Yes-iOS.a */; };
@@ -69,6 +73,12 @@
 		2DF5CFD8253434FF0082CD89 /* NavigationViewDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationViewDemoController.h; sourceTree = "<group>"; };
 		2DF5CFD9253434FF0082CD89 /* NavigationViewDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationViewDemoController.m; sourceTree = "<group>"; };
 		2DF5CFDE253481020082CD89 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		2DF5CFE325354BE30082CD89 /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
+		2DF5CFE8253555C80082CD89 /* dataImageStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = dataImageStore.m; path = "/Users/shichenpeng/Documents/Repo/yes-OC/Yes-iOS/Data/dataImageStore.m"; sourceTree = "<absolute>"; };
+		2DF5CFE9253555C80082CD89 /* dataImageStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dataImageStore.h; path = "/Users/shichenpeng/Documents/Repo/yes-OC/Yes-iOS/Data/dataImageStore.h"; sourceTree = "<absolute>"; };
+		2DF5CFEE25357A8C0082CD89 /* dataImageItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dataImageItem.h; sourceTree = "<group>"; };
+		2DF5CFEF25357A8C0082CD89 /* dataImageItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dataImageItem.m; sourceTree = "<group>"; };
+		2DF5CFF725359CBB0082CD89 /* focus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = focus.png; sourceTree = "<group>"; };
 		3BDCD281DE4718F95AE996A4 /* Pods-Yes-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Yes-iOS/Pods-Yes-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		72A387D98200DCF3EF0680A9 /* libPods-Yes-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yes-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4273E1D526E772E643DF144 /* Pods-Yes-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Yes-iOSTests/Pods-Yes-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -164,7 +174,9 @@
 		2DF5CC8525304D080082CD89 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2DF5CFF725359CBB0082CD89 /* focus.png */,
 				2DF5CFDE253481020082CD89 /* camera.png */,
+				2DF5CFE325354BE30082CD89 /* gallery.png */,
 				2DF5CC8025304D030082CD89 /* star.png */,
 			);
 			path = Images;
@@ -259,10 +271,14 @@
 		BCF5CCE02532E7CE00C0C361 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				2DF5CFE9253555C80082CD89 /* dataImageStore.h */,
+				2DF5CFE8253555C80082CD89 /* dataImageStore.m */,
 				BCF5CCD72532E73700C0C361 /* dataContainer.h */,
 				BCF5CCD82532E73700C0C361 /* dataContainer.m */,
 				BCF5CCE42532E9C100C0C361 /* dataItem.h */,
 				BCF5CCE52532E9C100C0C361 /* dataItem.m */,
+				2DF5CFEE25357A8C0082CD89 /* dataImageItem.h */,
+				2DF5CFEF25357A8C0082CD89 /* dataImageItem.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -382,8 +398,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF5CFF825359CBB0082CD89 /* focus.png in Resources */,
 				BC477F812528B4F400EDABA2 /* LaunchScreen.storyboard in Resources */,
 				2DF5CC8125304D030082CD89 /* star.png in Resources */,
+				2DF5CFE425354BE30082CD89 /* gallery.png in Resources */,
 				2DF5CFDF253481020082CD89 /* camera.png in Resources */,
 				BC477F7E2528B4F400EDABA2 /* Assets.xcassets in Resources */,
 			);
@@ -484,8 +502,10 @@
 				BC478024252B0D2200EDABA2 /* NSLayoutAnchorViewController.m in Sources */,
 				BC477F732528B4F200EDABA2 /* AppDelegate.m in Sources */,
 				2DF5CFDA253434FF0082CD89 /* NavigationViewDemoController.m in Sources */,
+				2DF5CFEA253555C80082CD89 /* dataImageStore.m in Sources */,
 				BC477F842528B4F400EDABA2 /* main.m in Sources */,
 				BCF5CCD92532E73700C0C361 /* dataContainer.m in Sources */,
+				2DF5CFF025357A8C0082CD89 /* dataImageItem.m in Sources */,
 				BCF5CCE62532E9C100C0C361 /* dataItem.m in Sources */,
 				2DF5CC47253013390082CD89 /* CollectionViewDemoController.m in Sources */,
 				2DF5CC6025303F4A0082CD89 /* BNRHypnosisView.m in Sources */,

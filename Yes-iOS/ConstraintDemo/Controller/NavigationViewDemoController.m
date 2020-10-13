@@ -8,6 +8,8 @@
 #import <Masonry/Masonry.h>
 #import "NavigationViewDemoController.h"
 #import "dataItem.h"
+#import "dataImageItem.h"
+#import "dataImageStore.h"
 
 @interface NavigationViewDemoController () <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UIView *naviView;
@@ -16,9 +18,11 @@
 @property (nonatomic, strong) UIImageView *imageDisplay;
 @property (nonatomic, strong) UIToolbar *tools;
 @property (nonatomic, strong) UIBarButtonItem *cameraShot;
+@property (nonatomic, strong) UIBarButtonItem *albums;
  
 // used to store the previous view color of navigationbar.
 @property (nonatomic, strong) UIColor *lastviewColer;
+@property (nonatomic, strong) dataImageStore *imageStore;
 
 @end
 
@@ -31,6 +35,7 @@
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStylePlain target:self action:@selector(clearText)];
         UINavigationItem *navItem = self.navigationItem;
         [navItem setRightBarButtonItem:item animated:YES];
+        _imageStore = [dataImageStore sharedStore];
     }
     return self;
 }
@@ -54,15 +59,23 @@
     [_titleName setDelegate:self];
     
     _imageDisplay = [[UIImageView alloc] init];
+    [_imageDisplay setBackgroundColor:[UIColor clearColor]];
     [_imageDisplay setContentMode:UIViewContentModeScaleAspectFit];
     
     _tools = [[UIToolbar alloc] init];
+    [_tools setBarStyle:UIBarStyleDefault];
     
-    UIImage *camera = [UIImage imageNamed:@"camera.png"];
-    _cameraShot = [[UIBarButtonItem alloc] initWithImage:camera style:UIBarButtonItemStylePlain target:self action:@selector(takePicture:)];
+//    UIImage *camera = [UIImage imageNamed:@"camera.png"];
+//    UIImage *gallery = [UIImage imageNamed:@"gallery.png"];
     
-    [_tools setItems:@[_cameraShot] animated:YES];
+    UIBarButtonItem *gap0 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    _cameraShot = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takePicture:)];
+    UIBarButtonItem *gap1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    _albums = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(selectFromAlbum:)];
+    UIBarButtonItem *gap2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     
+    _tools.items = @[gap0, _cameraShot, gap1, _albums, gap2];
+
     [_naviView addSubview:_titleLabel];
     [_naviView addSubview:_titleName];
     [_naviView addSubview:_imageDisplay];
@@ -134,7 +147,7 @@
         make.leading.equalTo(_naviView.mas_leading);
         make.trailing.equalTo(_naviView.mas_trailing);
         make.bottom.equalTo(_naviView.mas_bottom);
-        make.height.equalTo(_naviView.mas_width).multipliedBy(0.1);
+        make.height.equalTo(_naviView.mas_width).multipliedBy(0.15);
     }];
     
 }
@@ -147,30 +160,108 @@
     return YES;
 }
 
+- (void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    UIView *view = (UIView *)[touch view];
+    if(view ==_naviView || view == _imageDisplay){
+        [_titleName resignFirstResponder];
+    }
+}
+
 #pragma mark Action
 
 - (void) clearText{
-    [_titleName setText:@""];
-    [_imageDisplay setImage:nil];
+    
+    NSArray *items = [_imageStore allItems];
+    dataImageItem *item = [items lastObject];
+    
+    if(item){
+        [_imageStore removeItem:item];
+    }
+    
+    item = [items lastObject];
+    
+    NSString *title = nil;
+    UIImage *image = nil;
+    if(item){
+        title = item.itemName;
+        image = [_imageStore imageForKey:item.imageIdentification];
+    }
+    
+    [_titleName setText:title];
+    [_imageDisplay setImage:image];
+    
 }
 
 - (void) takePicture:(id)sender{
-    NSLog(@"take Picture!");
+    NSLog(@"Take Picture!");
     
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    //allows Editing
+    [imagePicker setAllowsEditing:YES];
+    
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
     }else{
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"发现错误!"
+                                       message:@"相机好像罢工了 _(:з」∠)_"
+                                       preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"寡人知道了。" style:UIAlertActionStyleDefault
+           handler:^(UIAlertAction * action) {}];
+        [alert addAction:defaultAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    [imagePicker setDelegate:self];
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void) selectFromAlbum:(id)sender{
+    NSLog(@"Select Picture From Album.");
+    
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    //allows Editing
+    [imagePicker setAllowsEditing:YES];
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]){
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }else{
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"发现错误!"
+                                       message:@"相册好像藏起来了 (つд⊂)"
+                                       preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"寡人知道了。" style:UIAlertActionStyleDefault
+           handler:^(UIAlertAction * action) {}];
+        [alert addAction:defaultAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }
     [imagePicker setDelegate:self];
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info{
-    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    NSString *type = info[UIImagePickerControllerMediaType];
     
-    [_imageDisplay setImage:image];
+    if([type isEqual:@"public.image"]){
+        UIImage *image = info[UIImagePickerControllerEditedImage];
+        dataImageItem *item = [_imageStore creatItem:_titleName.text valueInDollars:arc4random()%100 serialNumber:@"IPhone"];
+        [_imageStore setImage:image forKey:item.imageIdentification];
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        [_imageDisplay setImage:image];
+    }else if([type isEqual:@"public.movie"]){
+        NSURL *mediaURL = info[UIImagePickerControllerMediaURL];
+        if(mediaURL){
+            if(UIVideoAtPathIsCompatibleWithSavedPhotosAlbum([mediaURL path])){
+                UISaveVideoAtPathToSavedPhotosAlbum([mediaURL path], nil, nil, nil);
+                //[[NSFileManager defaultManager] removeItemAtPath:[mediaURL path] error:nil];
+            }
+        }
+    }else{
+        
+    }
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

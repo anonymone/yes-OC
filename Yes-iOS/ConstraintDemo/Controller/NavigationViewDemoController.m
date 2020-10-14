@@ -22,7 +22,7 @@
  
 // used to store the previous view color of navigationbar.
 @property (nonatomic, strong) UIColor *lastviewColer;
-@property (nonatomic, strong) dataImageStore *imageStore;
+@property (nonatomic, weak) dataImageStore *imageStore;
 
 @end
 

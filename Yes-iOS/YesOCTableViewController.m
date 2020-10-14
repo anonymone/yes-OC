@@ -43,7 +43,7 @@
         NSLayoutConstraintViewController.class,
         NSLayoutAnchorViewController.class,
         MasonryVersionAutoLayoutViewController.class,
-        //CollectionViewDemoController.class,
+        CollectionViewDemoController.class,
         ScrollViewDemoController.class,
         TimeSelectViewDemoController.class,
         TabBarViewDemoController.class,
@@ -128,6 +128,7 @@
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YesOCCellReuseIdentifier" forIndexPath:indexPath];
+    
     [cell.textLabel setText:[item title]];
     return cell;
 }

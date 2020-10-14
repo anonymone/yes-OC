@@ -5,114 +5,165 @@
 //  Created by ShichenPeng on 2020/10/9.
 //
 #import "CollectionViewDemoController.h"
+#import "VideoCollectionViewCell.h"
+#import "VideoSupplementaryCollectionReusableView.h"
+#import <UIKit/UIKit.h>
+#import <Masonry/Masonry.h>
 
-@interface CollectionViewDemoController ()
-@property (nonatomic,strong) NSMutableArray *data;
-@property (nonatomic, strong) UICollectionViewFlowLayout *layout;
+static NSString *VIDEO_CELL_IDENTIFIER = @"VideoContainer";
+static NSString *VIDEO_SUPPLEMENTARY_IDENTIFIER = @"VideoSupplementaryIdentifier";
+
+@interface CollectionViewDemoController () <UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@property (nonatomic,strong) NSMutableArray *dataList;
+@property (nonatomic, strong) UICollectionViewLayout *layout;
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) VideoSupplementaryCollectionReusableView *footer;
+
+//State
+@property (nonatomic) BOOL loading;
+
 @end
 
 @implementation CollectionViewDemoController
-
-static NSString * const reuseIdentifier = @"Cell";
+//@synthesize collectionView =_collectionView;
 
 - (instancetype) init{
-    self = [super init];
-    if(!self){
-        return nil;
-    }
-    [self setTitle:@"CollectionView Demo"];
-    _data = [[NSMutableArray alloc] initWithObjects:@"1", @"2", @"3",nil];
+    _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    _loading = NO;
+    _dataList = [[NSMutableArray alloc] init];
     
-    // 设置流水布局
-    _layout = [[UICollectionViewFlowLayout alloc]init];
-    // 定义大小
-    _layout.itemSize = CGSizeMake(100, 100);
-    // 设置最小行间距
-    _layout.minimumLineSpacing = 2;
-    // 设置垂直间距
-    _layout.minimumInteritemSpacing = 2;
-    // 设置滚动方向（默认垂直滚动）
-    _layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    return [self initWithCollectionViewLayout:_layout];
+    self = [super initWithCollectionViewLayout:_flowLayout];
+    if(self){
+        self.collectionView.delegate = self;
+        self.collectionView.dataSource = self;
+        [self setTitle:@"CollectionView Demo"];
+        
+        //load Data
+        for(int i=0; i<3; i++){
+            [_dataList addObject:[self randColor]];
+        }
+    }
+    return self;
 }
 
+- (void) loadView{
+    [super loadView];
+    
+    [_flowLayout setMinimumInteritemSpacing:0];
+    [_flowLayout setMinimumLineSpacing:0];
+    [_flowLayout setSectionInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [_flowLayout setFooterReferenceSize:CGSizeMake(self.view.frame.size.width, 30)];
+    
+    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:_flowLayout];
+    [self.collectionView setDelegate:self];
+    [self.collectionView setDataSource:self];
+    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    [self.collectionView setPagingEnabled:YES];
+    
+    [self.view addSubview:self.collectionView];
+    
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+        make.leading.equalTo(self.view.mas_leading);
+        make.trailing.equalTo(self.view.mas_trailing);
+    }];
+    
+    [self.collectionView registerClass:[VideoCollectionViewCell class] forCellWithReuseIdentifier:VIDEO_CELL_IDENTIFIER];
+//    [self.collectionView registerClass:[VideoSupplementaryCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:VIDEO_SUPPLEMENTARY_IDENTIFIER];
+    [self.collectionView registerClass:[VideoSupplementaryCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:VIDEO_SUPPLEMENTARY_IDENTIFIER];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:_layout];
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
-//    // Do any additional setup after loading the view.
-//    _viewCollectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
-//    [self.view addSubview:_viewCollectionView];
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    [self.view addSubview:self.collectionView];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark Delegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-#pragma mark <UICollectionViewDataSource>
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CGSize size = collectionView.safeAreaLayoutGuide.layoutFrame.size;
+    return size;
 }
 
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return _data.count;
+- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
+    return CGSizeMake(self.view.frame.size.width, self.view.frame.size.height*0.1);
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(_loading || _footer==nil){
+        return;
+    }
     
-    // Configure the cell
-    [cell setBackgroundColor:[UIColor colorWithRed:rand() green:rand() blue:rand() alpha:1]];
-    cell.largeContentTitle = _data[indexPath.row];
-    
+    if(self.footer.frame.origin.y < (scrollView.contentOffset.y + scrollView.bounds.size.height)){
+        _loading =YES;
+        [_footer activeIndicator];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //load Data
+            for(int i=0; i<3; i++){
+                [self.dataList addObject:[self randColor]];
+            }
+            CGPoint recentPoint = self.collectionView.contentOffset;
+            recentPoint.y -= self.footer.frame.size.height;
+            
+            [UICollectionView transitionWithView:self.collectionView duration:0.2 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void){
+                [self.collectionView setContentOffset:recentPoint];
+                self.footer = nil;
+                [self.collectionView reloadData];
+            } completion:nil];
+            
+            self.loading =NO;
+        });
+    }
+}
+
+#pragma mark SourceDelegate
+
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return _dataList.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    VideoCollectionViewCell *cell = (VideoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:VIDEO_CELL_IDENTIFIER forIndexPath:indexPath];
+    [cell setNum:[NSString stringWithFormat:@"%ld", indexPath.item]];
+    [cell setColor:[_dataList objectAtIndex:indexPath.row]];
+    [cell refreshData];
     return cell;
 }
 
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
+- (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    VideoSupplementaryCollectionReusableView *reusableCell = (VideoSupplementaryCollectionReusableView *)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:VIDEO_SUPPLEMENTARY_IDENTIFIER forIndexPath:indexPath];
+    if(kind == UICollectionElementKindSectionHeader){
+        reusableCell.num = [NSString stringWithFormat:@"The Header."];
+    }else if(kind == UICollectionElementKindSectionFooter){
+        reusableCell.num = [NSString stringWithFormat:@"The Footer."];
+        _footer = reusableCell;
+    }else{
+        reusableCell.num = [NSString stringWithFormat:@"UnKnown Thing."];
+    }
+//    if(kind != UICollectionElementKindSectionFooter){
+//        _footer = nil;
+//    }
+    NSLog(@"%@ Loaded.", reusableCell.num);
+    [reusableCell refreshData];
+    return reusableCell;
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
+- (void)addItem:(id)sender {
+    
 }
 
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
+- (UIColor *) randColor{
+    float red = (220+(arc4random()%30))/100.0;
+    float green = (10+(arc4random()%50))/100.0;
+    float blue = (10+(arc4random()%50))/100.0;
+    UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:0.8];
+    return color;
 }
-*/
 
 @end

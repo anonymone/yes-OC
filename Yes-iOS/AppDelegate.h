@@ -5,6 +5,8 @@
 //  Created by Severus Peng on 2020/10/3.
 //
 
+#define kDownloadProgressBar @"DownloadItemProgressBar"
+
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

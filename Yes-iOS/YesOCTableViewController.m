@@ -18,6 +18,7 @@
 #import "TabBarViewDemoController.h"
 #import "ZoomViewDemoController.h"
 #import "NavigationViewDemoController.h"
+#import "URLSessionViewDemoController.h"
 
 @interface YesOCTableViewController ()
 @property (nonatomic, strong) dataContainer *dataContainer;
@@ -48,7 +49,8 @@
         TimeSelectViewDemoController.class,
         TabBarViewDemoController.class,
         ZoomViewDemoController.class,
-        NavigationViewDemoController.class
+        NavigationViewDemoController.class,
+        URLSessionViewDemoController.class
     ];
     
     _dataContainer = [[dataContainer alloc] init];

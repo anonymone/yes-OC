@@ -159,9 +159,9 @@ static NSString *VIDEO_SUPPLEMENTARY_IDENTIFIER = @"VideoSupplementaryIdentifier
 }
 
 - (UIColor *) randColor{
-    float red = (220+(arc4random()%30))/100.0;
-    float green = (10+(arc4random()%50))/100.0;
-    float blue = (10+(arc4random()%50))/100.0;
+    float red = (50+(arc4random()%200))/250.0;
+    float green = ((arc4random()%250))/250.0;
+    float blue = ((arc4random()%250))/250.0;
     UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:0.8];
     return color;
 }

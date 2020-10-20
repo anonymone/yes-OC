@@ -6,6 +6,7 @@
 //
 
 #import "URLSessionViewDemoController.h"
+#import "WebPageView.h"
 #import <Masonry/Masonry.h>
 #import <WebKit/WebKit.h>
 #import "AppDelegate.h"
@@ -17,8 +18,11 @@
 @property (nonatomic, strong) UIProgressView *prograssBar;
 @property (nonatomic, strong) UITextView *consoleText;
 
+@property (nonatomic, strong) UIVisualEffectView *effectView;
+
 @property (nonatomic,strong) UIViewController *webController;
-@property (nonatomic, strong) WKWebView *webPage;
+//@property (nonatomic, strong) WKWebView *webPage;
+@property (nonatomic, strong) WebPageView *webPage;
 
 //load Task
 
@@ -65,13 +69,21 @@
     [_consoleText setEditable:NO];
     
     _webController = [[UIViewController alloc] init];
-    _webPage =  [[WKWebView alloc] initWithFrame:self.view.bounds];
+    [_webController setModalPresentationStyle:UIModalPresentationCustom];
+    _webPage =  [[WebPageView alloc] initWithFrame:self.view.bounds];
+    [_webPage.exit addTarget:self action:@selector(cancelWebPage:) forControlEvents:UIControlEventTouchUpInside];
     [_webController.view addSubview:_webPage];
     
+    _effectView = [[UIVisualEffectView alloc] initWithFrame:self.view.frame];
+    [_effectView setHidden:YES];
+    [_effectView setEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+    [_effectView setAlpha:0.9f];
+    
     [self.view addSubview:_URLText];
-    [self.view addSubview:_loadButton];
     [self.view addSubview:_prograssBar];
     [self.view addSubview:_consoleText];
+    [self.view addSubview:_loadButton];
+    [self.view addSubview:_effectView];
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
 }
@@ -148,8 +160,9 @@
     }];
     [task resume];
     
-    [UIView transitionWithView:self.view duration:0.3 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+    [UIView transitionWithView:self.view duration:0.3 options:UIViewAnimationOptionLayoutSubviews animations:^{
         self.prograssBar.hidden = NO;
+        self.effectView.hidden = NO;
         [self.consoleText mas_remakeConstraints:^(MASConstraintMaker *make){
             make.top.equalTo(self.prograssBar.mas_bottom).offset(1);
             make.leading.equalTo(self.URLText.mas_leading);
@@ -159,11 +172,20 @@
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished){
         if(finished){
-            //[self.navigationController pushViewController:self.webController animated:YES];
-            [self.webPage loadRequest:request];
+            [self.webPage setRequest:request];
+            [self presentViewController:self.webController animated:YES completion:^(){
+                [self.webPage updatePage];
+            }];
         }
     }];
     [_URLText resignFirstResponder];
+}
+
+- (void) cancelWebPage:(UIButton *) sender{
+    [self.webController dismissViewControllerAnimated:YES completion:nil];
+    [UIView transitionWithView:self.view duration:0.3 options:UIViewAnimationOptionLayoutSubviews animations:^(){
+        [self.effectView setHidden:YES];
+    } completion:nil];
 }
 
 /*

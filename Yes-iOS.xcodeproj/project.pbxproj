@@ -23,6 +23,7 @@
 		2DF5D008253695800082CD89 /* VideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5D007253695800082CD89 /* VideoCollectionViewCell.m */; };
 		2DF5D0112536CE200082CD89 /* VideoSupplementaryCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5D0102536CE200082CD89 /* VideoSupplementaryCollectionReusableView.m */; };
 		2DF5D01B2537FA920082CD89 /* URLSessionViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5D01A2537FA920082CD89 /* URLSessionViewDemoController.m */; };
+		2DF5D021253939840082CD89 /* WebPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5D020253939840082CD89 /* WebPageView.m */; };
 		53461784E15E37E3464C384C /* libPods-Yes-iOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8782DBEF900FC5DAC3BF4A7 /* libPods-Yes-iOSTests.a */; };
 		596331C62B0E1862C8CCE455 /* libPods-Yes-iOS-Yes-iOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFB4F56B4537B18518CE1DD /* libPods-Yes-iOS-Yes-iOSUITests.a */; };
 		73DFCFAEEF096AE01A6FCC54 /* libPods-Yes-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A387D98200DCF3EF0680A9 /* libPods-Yes-iOS.a */; };
@@ -88,6 +89,8 @@
 		2DF5D0102536CE200082CD89 /* VideoSupplementaryCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoSupplementaryCollectionReusableView.m; sourceTree = "<group>"; };
 		2DF5D0192537FA920082CD89 /* URLSessionViewDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = URLSessionViewDemoController.h; path = "Yes-iOS/Controller/URLSessionViewDemoController.h"; sourceTree = SOURCE_ROOT; };
 		2DF5D01A2537FA920082CD89 /* URLSessionViewDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = URLSessionViewDemoController.m; path = "Yes-iOS/Controller/URLSessionViewDemoController.m"; sourceTree = SOURCE_ROOT; };
+		2DF5D01F253939840082CD89 /* WebPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebPageView.h; sourceTree = "<group>"; };
+		2DF5D020253939840082CD89 /* WebPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebPageView.m; sourceTree = "<group>"; };
 		3BDCD281DE4718F95AE996A4 /* Pods-Yes-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Yes-iOS/Pods-Yes-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		72A387D98200DCF3EF0680A9 /* libPods-Yes-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yes-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4273E1D526E772E643DF144 /* Pods-Yes-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Yes-iOSTests/Pods-Yes-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 		2DF5CC6425303F530082CD89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2DF5D01F253939840082CD89 /* WebPageView.h */,
+				2DF5D020253939840082CD89 /* WebPageView.m */,
 				2DF5CC5E25303F4A0082CD89 /* BNRHypnosisView.h */,
 				2DF5CC5F25303F4A0082CD89 /* BNRHypnosisView.m */,
 				2DF5D006253695800082CD89 /* VideoCollectionViewCell.h */,
@@ -523,6 +528,7 @@
 				2DF5CFF025357A8C0082CD89 /* dataImageItem.m in Sources */,
 				BCF5CCE62532E9C100C0C361 /* dataItem.m in Sources */,
 				2DF5CC47253013390082CD89 /* CollectionViewDemoController.m in Sources */,
+				2DF5D021253939840082CD89 /* WebPageView.m in Sources */,
 				2DF5CC6025303F4A0082CD89 /* BNRHypnosisView.m in Sources */,
 				2DF5D01B2537FA920082CD89 /* URLSessionViewDemoController.m in Sources */,
 				2DF5CC9D253072140082CD89 /* ScrollViewDemoController.m in Sources */,

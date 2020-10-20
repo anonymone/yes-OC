@@ -6,7 +6,8 @@ target 'Yes-iOS' do
 
   # Pods for Yes-iOS
   pod 'Masonry'
-  pod 'IGListKit', '~> 4.0'
+  pod 'IGListKit'
+  pod 'Mantle'
 
   target 'Yes-iOSTests' do
     inherit! :search_paths

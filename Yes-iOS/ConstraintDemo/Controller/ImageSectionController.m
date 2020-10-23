@@ -81,27 +81,35 @@
 }
 
 - (void)listAdapter:(IGListAdapter *)listAdapter sectionControllerDidExitWorkingRange:(IGListSectionController *)sectionController{
-    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
+        self.task = nil;
+        self.image = nil;
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [(ImageDisplayCollectionViewCell *)[self.collectionContext cellForItemAtIndex:0 sectionController:self] setImage:self.image];
+        });
+    });
 }
 
 - (void) listAdapter:(IGListAdapter *)listAdapter sectionControllerWillEnterWorkingRange:(IGListSectionController *)sectionController{
-    if(_image!=nil || _task != nil){
+    if(_image!=nil && _task != nil){
         return;
     }
     
     NSString *urlString = self.object.URL;
     
     NSURL *url = [NSURL URLWithString:urlString];
-    _task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
-        if(error){
-            NSLog(@"Load %@ Error with ERROR %@.", urlString, error.localizedDescription);
-        }
-        UIImage *image = [UIImage imageWithData:data];
-        dispatch_async(dispatch_get_main_queue(), ^(){
-            self.image = image;
-            [(ImageDisplayCollectionViewCell *)[self.collectionContext cellForItemAtIndex:0 sectionController:self] setImage:self.image];
-        });
-    }];
+    if(_task == nil){
+        _task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+            if(error){
+                NSLog(@"Load %@ Error with ERROR %@.", urlString, error.localizedDescription);
+            }
+            UIImage *image = [UIImage imageWithData:data];
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                self.image = image;
+                [(ImageDisplayCollectionViewCell *)[self.collectionContext cellForItemAtIndex:0 sectionController:self] setImage:self.image];
+            });
+        }];
+    }
     [_task resume];
 }
 

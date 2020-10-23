@@ -24,6 +24,10 @@
 @property (nonatomic) BOOL isLoading;
 @property (nonatomic, assign) NSInteger colunm;
 
+// Image parameters
+@property (nonatomic, assign) NSInteger imageWidth;
+@property (nonatomic, assign) NSInteger imageHeight;
+
 @end
 
 @implementation IGListCollectionViewDemoController
@@ -32,6 +36,8 @@
     if(self){
         self.title = @"IGList CollectionView Demo";
         _colunm = 2;
+        _imageWidth = 400;
+        _imageHeight = _imageWidth*1.5;
     }
     _isLoading = NO;
     return self;
@@ -42,12 +48,12 @@
     
     if(_data){
         _data = [NSMutableArray arrayWithObjects:
-                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:@"https://picsum.photos/200/300"],
-                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:@"https://picsum.photos/200/300"],
-                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:@"https://picsum.photos/200/300"],
-                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:@"https://picsum.photos/200/300"],
-                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:@"https://picsum.photos/200/300"],
-                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:@"https://picsum.photos/200/300"],
+                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:[NSString stringWithFormat:@"https://picsum.photos/%ld/%ld", (long)_imageWidth, (long)_imageHeight]],
+                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:[NSString stringWithFormat:@"https://picsum.photos/%ld/%ld", (long)_imageWidth, (long)_imageHeight]],
+                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:[NSString stringWithFormat:@"https://picsum.photos/%ld/%ld", (long)_imageWidth, (long)_imageHeight]],
+                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:[NSString stringWithFormat:@"https://picsum.photos/%ld/%ld", (long)_imageWidth, (long)_imageHeight]],
+                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:[NSString stringWithFormat:@"https://picsum.photos/%ld/%ld", (long)_imageWidth, (long)_imageHeight]],
+                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:[NSString stringWithFormat:@"https://picsum.photos/%ld/%ld", (long)_imageWidth, (long)_imageHeight]],
                  nil];
     }
     return _data;
@@ -98,7 +104,7 @@
 
 - (IGListAdapter *)adapter {
     if (!_adapter) {
-        _adapter = [[IGListAdapter alloc] initWithUpdater:[[IGListAdapterUpdater alloc] init] viewController:self workingRangeSize:1];
+        _adapter = [[IGListAdapter alloc] initWithUpdater:[[IGListAdapterUpdater alloc] init] viewController:self workingRangeSize:10];
     }
     return _adapter;
 }
@@ -165,7 +171,7 @@
                 //NSInteger itemCount = self.data.count;
                 [self.data removeLastObject];
                 for(int i=0; i<10; i++){
-                    [self.data addObject:[[ImageItem alloc] init:[self randColor] itemSize: [self getSectionSizeADD] webURL:@"https://picsum.photos/200/300"]];
+                    [self.data addObject:[[ImageItem alloc] init:[self randColor] itemSize: [self getSectionSizeADD] webURL:[NSString stringWithFormat:@"https://picsum.photos/%ld/%ld", (long)self->_imageWidth, (long)self->_imageHeight]]];
                 }
                 [self.adapter performUpdatesAnimated:YES completion:nil];
             });

@@ -64,6 +64,22 @@
     _object = object;
 }
 
+- (void) didSelectItemAtIndex:(NSInteger)index{
+    [[(ImageDisplayCollectionViewCell *)[self.collectionContext cellForItemAtIndex:0 sectionController:self] loadingIndicator] startAnimating];
+    NSURL *url = [NSURL URLWithString:self.object.URL];
+    _task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+        if(error){
+            NSLog(@"Load %@ Error with ERROR %@.", self.object.URL, error.localizedDescription);
+        }
+        UIImage *image = [UIImage imageWithData:data];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            self.image = image;
+            [(ImageDisplayCollectionViewCell *)[self.collectionContext cellForItemAtIndex:0 sectionController:self] setImage:self.image];
+        });
+    }];
+    [_task resume];
+}
+
 - (void)listAdapter:(IGListAdapter *)listAdapter sectionControllerDidExitWorkingRange:(IGListSectionController *)sectionController{
     
 }

@@ -9,7 +9,6 @@
 
 @interface ImageDisplayCollectionViewCell ()
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong)  UIActivityIndicatorView *loadingIndicator;
 
 @end
 

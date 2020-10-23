@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ImageDisplayCollectionViewCell : UICollectionViewCell
+@property (nonatomic, strong)  UIActivityIndicatorView *loadingIndicator;
 
 - (void) setImage:(UIImage *)image;
 

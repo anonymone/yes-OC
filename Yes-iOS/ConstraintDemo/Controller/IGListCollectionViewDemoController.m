@@ -38,10 +38,11 @@
 }
 
 - (NSMutableArray *) configData{
-    _SectionSize = CGSizeMake(self.view.bounds.size.width/self.colunm, self.view.bounds.size.width);
+    _SectionSize = CGSizeMake(self.view.bounds.size.width/self.colunm, self.view.bounds.size.width*0.75);
     
     if(_data){
         _data = [NSMutableArray arrayWithObjects:
+                 [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:@"https://picsum.photos/200/300"],
                  [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:@"https://picsum.photos/200/300"],
                  [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:@"https://picsum.photos/200/300"],
                  [[ImageItem alloc] init:[self randColor] itemSize: &_SectionSize webURL:@"https://picsum.photos/200/300"],
@@ -97,20 +98,13 @@
 
 - (IGListAdapter *)adapter {
     if (!_adapter) {
-        _adapter = [[IGListAdapter alloc] initWithUpdater:[[IGListAdapterUpdater alloc] init] viewController:self workingRangeSize:4];
+        _adapter = [[IGListAdapter alloc] initWithUpdater:[[IGListAdapterUpdater alloc] init] viewController:self workingRangeSize:1];
     }
     return _adapter;
 }
 
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
-        
-//        MultiFeedCollectionFlowLayout *layout = [[MultiFeedCollectionFlowLayout alloc] init];
-//        layout.columnCount = 3;
-//        layout.itemList = _data;
-//        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-//        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-        
         _collectionView = [[IGListCollectionView alloc] initWithFrame:CGRectZero];
         [_collectionView setBackgroundColor:[UIColor whiteColor]];
     }
@@ -166,8 +160,6 @@
         [self.adapter performUpdatesAnimated:YES completion:nil];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
-            sleep(2);
-            
             dispatch_async(dispatch_get_main_queue(), ^(){
                 self.isLoading = NO;
                 //NSInteger itemCount = self.data.count;

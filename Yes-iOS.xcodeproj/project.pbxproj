@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2D4EB179253EBE0000CDEC64 /* AsynchronouslyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4EB178253EBE0000CDEC64 /* AsynchronouslyViewController.m */; };
+		2D5B1CE9254183DD00813DFF /* LoadingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B1CE8254183DD00813DFF /* LoadingCollectionViewCell.m */; };
+		2D9BE120254280770046199F /* ImageDisplayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9BE11F254280770046199F /* ImageDisplayCollectionViewCell.m */; };
+		2DF030EF253FD9DC00C5048E /* LabelSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF030EE253FD9DC00C5048E /* LabelSectionController.m */; };
+		2DF030F5253FDCF200C5048E /* IGListCollectionViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF030F4253FDCF200C5048E /* IGListCollectionViewDemoController.m */; };
+		2DF0310625402E5600C5048E /* TitleLabelCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0310525402E5600C5048E /* TitleLabelCollectionViewCell.m */; };
+		2DF0310C2540398800C5048E /* ImageSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0310B2540398800C5048E /* ImageSectionController.m */; };
 		2DF5CC47253013390082CD89 /* CollectionViewDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CC46253013390082CD89 /* CollectionViewDemoController.m */; };
 		2DF5CC6025303F4A0082CD89 /* BNRHypnosisView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5CC5F25303F4A0082CD89 /* BNRHypnosisView.m */; };
 		2DF5CC8125304D030082CD89 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5CC8025304D030082CD89 /* star.png */; };
@@ -64,6 +70,18 @@
 		1E54408E28C4138935E7EADF /* Pods-Yes-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-iOS.release.xcconfig"; path = "Target Support Files/Pods-Yes-iOS/Pods-Yes-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		2D4EB177253EBE0000CDEC64 /* AsynchronouslyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AsynchronouslyViewController.h; path = "Yes-iOS/Controller/AsynchronouslyViewController.h"; sourceTree = SOURCE_ROOT; };
 		2D4EB178253EBE0000CDEC64 /* AsynchronouslyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AsynchronouslyViewController.m; path = "Yes-iOS/Controller/AsynchronouslyViewController.m"; sourceTree = SOURCE_ROOT; };
+		2D5B1CE7254183DD00813DFF /* LoadingCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoadingCollectionViewCell.h; path = "Yes-iOS/ConstraintDemo/Controller/View/LoadingCollectionViewCell.h"; sourceTree = "<group>"; };
+		2D5B1CE8254183DD00813DFF /* LoadingCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoadingCollectionViewCell.m; path = "Yes-iOS/ConstraintDemo/Controller/View/LoadingCollectionViewCell.m"; sourceTree = "<group>"; };
+		2D9BE11E254280770046199F /* ImageDisplayCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ImageDisplayCollectionViewCell.h; path = "Yes-iOS/ConstraintDemo/Controller/View/ImageDisplayCollectionViewCell.h"; sourceTree = "<group>"; };
+		2D9BE11F254280770046199F /* ImageDisplayCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ImageDisplayCollectionViewCell.m; path = "Yes-iOS/ConstraintDemo/Controller/View/ImageDisplayCollectionViewCell.m"; sourceTree = "<group>"; };
+		2DF030ED253FD9DC00C5048E /* LabelSectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LabelSectionController.h; path = "Yes-iOS/ConstraintDemo/Controller/LabelSectionController.h"; sourceTree = "<group>"; };
+		2DF030EE253FD9DC00C5048E /* LabelSectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LabelSectionController.m; path = "Yes-iOS/ConstraintDemo/Controller/LabelSectionController.m"; sourceTree = "<group>"; };
+		2DF030F3253FDCF200C5048E /* IGListCollectionViewDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IGListCollectionViewDemoController.h; path = "Yes-iOS/ConstraintDemo/Controller/IGListCollectionViewDemoController.h"; sourceTree = "<group>"; };
+		2DF030F4253FDCF200C5048E /* IGListCollectionViewDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IGListCollectionViewDemoController.m; path = "Yes-iOS/ConstraintDemo/Controller/IGListCollectionViewDemoController.m"; sourceTree = "<group>"; };
+		2DF0310425402E5600C5048E /* TitleLabelCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TitleLabelCollectionViewCell.h; path = "Yes-iOS/ConstraintDemo/Controller/View/TitleLabelCollectionViewCell.h"; sourceTree = "<group>"; };
+		2DF0310525402E5600C5048E /* TitleLabelCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TitleLabelCollectionViewCell.m; path = "Yes-iOS/ConstraintDemo/Controller/View/TitleLabelCollectionViewCell.m"; sourceTree = "<group>"; };
+		2DF0310A2540398800C5048E /* ImageSectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ImageSectionController.h; path = "Yes-iOS/ConstraintDemo/Controller/ImageSectionController.h"; sourceTree = "<group>"; };
+		2DF0310B2540398800C5048E /* ImageSectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ImageSectionController.m; path = "Yes-iOS/ConstraintDemo/Controller/ImageSectionController.m"; sourceTree = "<group>"; };
 		2DF5CC45253013390082CD89 /* CollectionViewDemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CollectionViewDemoController.h; path = "Yes-iOS/ConstraintDemo/Controller/CollectionViewDemoController.h"; sourceTree = SOURCE_ROOT; };
 		2DF5CC46253013390082CD89 /* CollectionViewDemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CollectionViewDemoController.m; path = "Yes-iOS/ConstraintDemo/Controller/CollectionViewDemoController.m"; sourceTree = SOURCE_ROOT; };
 		2DF5CC5E25303F4A0082CD89 /* BNRHypnosisView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BNRHypnosisView.h; path = "Yes-iOS/ConstraintDemo/Controller/View/BNRHypnosisView.h"; sourceTree = SOURCE_ROOT; };
@@ -156,9 +174,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DF030EC253FD94500C5048E /* IGListKit */ = {
+			isa = PBXGroup;
+			children = (
+				2DF030ED253FD9DC00C5048E /* LabelSectionController.h */,
+				2D5B1CE7254183DD00813DFF /* LoadingCollectionViewCell.h */,
+				2D5B1CE8254183DD00813DFF /* LoadingCollectionViewCell.m */,
+				2DF030EE253FD9DC00C5048E /* LabelSectionController.m */,
+				2DF030F3253FDCF200C5048E /* IGListCollectionViewDemoController.h */,
+				2DF030F4253FDCF200C5048E /* IGListCollectionViewDemoController.m */,
+				2DF0310A2540398800C5048E /* ImageSectionController.h */,
+				2DF0310B2540398800C5048E /* ImageSectionController.m */,
+				2DF0310425402E5600C5048E /* TitleLabelCollectionViewCell.h */,
+				2DF0310525402E5600C5048E /* TitleLabelCollectionViewCell.m */,
+				2D9BE11E254280770046199F /* ImageDisplayCollectionViewCell.h */,
+				2D9BE11F254280770046199F /* ImageDisplayCollectionViewCell.m */,
+			);
+			name = IGListKit;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
 		2DF5CC4B2530134E0082CD89 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2DF030EC253FD94500C5048E /* IGListKit */,
 				2D4EB177253EBE0000CDEC64 /* AsynchronouslyViewController.h */,
 				2D4EB178253EBE0000CDEC64 /* AsynchronouslyViewController.m */,
 				2DF5D0192537FA920082CD89 /* URLSessionViewDemoController.h */,
@@ -525,11 +564,16 @@
 				BC478030252B169700EDABA2 /* NSLayoutConstraintViewController.m in Sources */,
 				BC477FC2252A028400EDABA2 /* MasonryVersionAutoLayoutViewController.m in Sources */,
 				BC478024252B0D2200EDABA2 /* NSLayoutAnchorViewController.m in Sources */,
+				2DF030F5253FDCF200C5048E /* IGListCollectionViewDemoController.m in Sources */,
 				BC477F732528B4F200EDABA2 /* AppDelegate.m in Sources */,
+				2DF0310C2540398800C5048E /* ImageSectionController.m in Sources */,
+				2D9BE120254280770046199F /* ImageDisplayCollectionViewCell.m in Sources */,
 				2DF5CFDA253434FF0082CD89 /* NavigationViewDemoController.m in Sources */,
 				2DF5CFEA253555C80082CD89 /* dataImageStore.m in Sources */,
+				2DF030EF253FD9DC00C5048E /* LabelSectionController.m in Sources */,
 				BC477F842528B4F400EDABA2 /* main.m in Sources */,
 				BCF5CCD92532E73700C0C361 /* dataContainer.m in Sources */,
+				2DF0310625402E5600C5048E /* TitleLabelCollectionViewCell.m in Sources */,
 				2DF5CFF025357A8C0082CD89 /* dataImageItem.m in Sources */,
 				BCF5CCE62532E9C100C0C361 /* dataItem.m in Sources */,
 				2DF5CC47253013390082CD89 /* CollectionViewDemoController.m in Sources */,
@@ -544,6 +588,7 @@
 				2D4EB179253EBE0000CDEC64 /* AsynchronouslyViewController.m in Sources */,
 				2DF5CCA6253073760082CD89 /* TabBarViewDemoController.m in Sources */,
 				2DF5CCAC253073E70082CD89 /* TimeSelectViewDemoController.m in Sources */,
+				2D5B1CE9254183DD00813DFF /* LoadingCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

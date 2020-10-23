@@ -20,6 +20,7 @@
 #import "NavigationViewDemoController.h"
 #import "URLSessionViewDemoController.h"
 #import "AsynchronouslyViewController.h"
+#import "IGListCollectionViewDemoController.h"
 
 @interface YesOCTableViewController ()
 @property (nonatomic, strong) dataContainer *dataContainer;
@@ -46,6 +47,7 @@
         NSLayoutAnchorViewController.class,
         MasonryVersionAutoLayoutViewController.class,
         CollectionViewDemoController.class,
+        IGListCollectionViewDemoController.class,
         ScrollViewDemoController.class,
         TimeSelectViewDemoController.class,
         TabBarViewDemoController.class,
